@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Sentiment Analysis</title>
+  <!-- Include Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Styling for the charts container */
+    .chart-container {
+      display: flex;
+      justify-content: center; /* Center align the chart */
+      margin-top: 20px;
+    }
+
+    /* Styling for the individual chart */
+    .chart {
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Social Media Sentiment Analysis</h1>
+
+  <!-- Display error message if any -->
+  {% if error %}
+    <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  <!-- Display total positive and negative percentages -->
+  <p>Total Positive Percentage: {{ total_positive_percentage }}%</p>
+  <p>Total Negative Percentage: {{ total_negative_percentage }}%</p>
+
+  <!-- Display positive tweets if available -->
+  {% if positive_texts %}
+    <h2>Positive Tweets:</h2>
+    <ul>
+      {% for tweet in positive_texts %}
+        <li>{{ tweet }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- Display negative tweets if available -->
+  {% if negative_texts %}
+    <h2>Negative Tweets:</h2>
+    <ul>
+      {% for tweet in negative_texts %}
+        <li>{{ tweet }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- Container for the Twitter chart -->
+  <div class="chart-container">
+    <!-- Chart for Twitter -->
+    <div class="chart">
+      <h2>Twitter</h2>
+      <canvas id="twitterChart"></canvas>
+    </div>
+  </div>
+  <form action="/live" method="post">
+    <label for="hashtagInput">Enter Hashtag:</label>
+    <input type="text" id="hashtagInput" name="text" required>
+    <button type="submit">Analyze</button>
+  </form>
+
+  <script>
+  </script>
+</body>
+</html>

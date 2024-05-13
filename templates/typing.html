@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Text</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="max-w-md w-full mx-auto p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Type your text here:</h2>
+        <form action="/typing" method="post">
+            <textarea name="text" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                rows="5"></textarea>
+            <div class="mt-4">
+                <button type="submit"
+                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Submit</button>
+            </div>
+        </form>
+
+        {% if sentiment %}
+        <div class="mt-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Sentiment Analysis:</h3>
+            {% if sentiment == 'Positive' %}
+            <p class="text-green-600 font-semibold">The sentiment is: Positive</p>
+            {% elif sentiment == 'Negative' %}
+            <p class="text-red-600 font-semibold">The sentiment is: Negative</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="mt-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Error:</h3>
+            <p class="text-red-600 font-semibold">{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
