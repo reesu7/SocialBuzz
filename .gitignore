@@ -5,6 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
+*.csv 
+# for training csv data
 
 # Distribution / packaging
 .Python
