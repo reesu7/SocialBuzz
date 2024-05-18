@@ -1,4 +1,5 @@
 import requests
+
 def fetch_twitter_data(hashtag):
     url = "https://twitter154.p.rapidapi.com/hashtag/hashtag"
     payload = {

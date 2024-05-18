@@ -1,11 +1,20 @@
 from flask import Flask, request, render_template
 from prediction import preprocess, load_models, predict
 from datafetch import fetch_twitter_data
+
+# Initialize the Flask app
 app = Flask(__name__)
+
+# Load the models
 vectoriser, LRmodel = load_models()
+
+# Redirects to the landing page
 @app.route('/')
 def home():
     return render_template('index.html')
+
+# Redirects to the page where user inputs data
+# and gets the sentiment of the input text
 @app.route('/typing', methods=['GET', 'POST'])
 def typing():
     if request.method == 'GET':
@@ -20,6 +29,9 @@ def typing():
         except Exception as e:
             error = str(e)
             return render_template('typing.html', error=error)
+
+# Redirects to the page where user inputs a hashtag
+# and gets the sentiment of the tweets related to the hashtag
 @app.route('/live', methods=['GET', 'POST'])
 def live():
     if request.method == 'GET':

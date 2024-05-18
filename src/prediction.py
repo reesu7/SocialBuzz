@@ -4,6 +4,11 @@ import numpy as np
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+from pathlib import Path
+
+
+def relative_to_utils(filename):
+    return Path(__file__).parent / 'utils' / filename
 
 emojis = {':)': 'smile', ':-)': 'smile', ';d': 'wink', ':-E': 'vampire', ':(': 'sad', 
           ':-(': 'sad', ':-<': 'sad', ':P': 'raspberry', ':O': 'surprised',
@@ -55,10 +60,14 @@ def preprocess(textdata):
     return processedText
 
 def load_models():
-    with open('vectoriser-ngram-(1,2).pickle', 'rb') as file:
+    vectoriser_path = relative_to_utils('vectoriser-ngram-(1,2).pickle')
+    lrmodel_path = relative_to_utils('lr.pickle')
+
+    with vectoriser_path.open('rb') as file:
         vectoriser = pickle.load(file)
-    with open('lr.pickle', 'rb') as file:
+    with lrmodel_path.open('rb') as file:
         LRmodel = pickle.load(file)
+    
     return vectoriser, LRmodel
 
 def predict(vectoriser, model, text):
