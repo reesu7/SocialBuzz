@@ -1,0 +1,13 @@
+Flask==3.0.3
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+Werkzeug==2.0.2
+click==8.0.1
+itsdangerous==2.0.1
+matplotlib==3.8.4
+nltk==3.8.1
+numpy==1.21.0
+pandas==2.2.2
+scikit-learn==1.4.2
+seaborn==0.13.2
+wordcloud==1.9.3
