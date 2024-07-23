@@ -1,5 +1,5 @@
 
-# Social Media Sentiment Analysis
+# SocialBuzz
 In this project, I developed a social media sentiment analysis tool that classifies tweets as positive or negative. The objective was to analyze the sentiment of social media posts, particularly tweets, to gain insights into public opinion and emotional responses towards various topics, brands, or events.
 
 
